@@ -5,14 +5,18 @@ const Leaderboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const getApiBaseUrl = () => {
+    const codespaceName = process.env.REACT_APP_CODESPACE_NAME;
+    if (codespaceName) {
+      return `https://${codespaceName}-8000.app.github.dev/api`;
+    }
+    return 'http://localhost:8000/api';
+  };
+
   useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const codspaceName = process.env.REACT_APP_CODESPACE_NAME || 'localhost:8000';
-        const protocol = codspaceName === 'localhost:8000' ? 'http' : 'https';
-        const domain = codspaceName === 'localhost:8000' ? 'localhost:8000' : `${codspaceName}-8000.app.github.dev`;
-        const apiUrl = `${protocol}://${domain}/api/leaderboard/`;
-        
+        const apiUrl = `${getApiBaseUrl()}/leaderboard/`;
         console.log('Fetching leaderboard from:', apiUrl);
         const response = await fetch(apiUrl);
         
@@ -74,7 +78,7 @@ const Leaderboard = () => {
             </div>
           ) : (
             <div className="table-responsive">
-              <table className="table table-striped table-hover">
+              <table className="table table-striped table-hover table-bordered align-middle">
                 <thead>
                   <tr>
                     <th scope="col">Rank</th>

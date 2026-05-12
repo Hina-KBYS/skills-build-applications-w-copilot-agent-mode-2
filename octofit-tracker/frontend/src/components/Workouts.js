@@ -5,14 +5,18 @@ const Workouts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const getApiBaseUrl = () => {
+    const codespaceName = process.env.REACT_APP_CODESPACE_NAME;
+    if (codespaceName) {
+      return `https://${codespaceName}-8000.app.github.dev/api`;
+    }
+    return 'http://localhost:8000/api';
+  };
+
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
-        const codspaceName = process.env.REACT_APP_CODESPACE_NAME || 'localhost:8000';
-        const protocol = codspaceName === 'localhost:8000' ? 'http' : 'https';
-        const domain = codspaceName === 'localhost:8000' ? 'localhost:8000' : `${codspaceName}-8000.app.github.dev`;
-        const apiUrl = `${protocol}://${domain}/api/workouts/`;
-        
+        const apiUrl = `${getApiBaseUrl()}/workouts/`;
         console.log('Fetching workouts from:', apiUrl);
         const response = await fetch(apiUrl);
         
@@ -74,7 +78,7 @@ const Workouts = () => {
             </div>
           ) : (
             <div className="table-responsive">
-              <table className="table table-striped table-hover">
+              <table className="table table-striped table-hover table-bordered align-middle">
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
@@ -92,8 +96,8 @@ const Workouts = () => {
                       </td>
                       <td>{workout.description || 'N/A'}</td>
                       <td>
-                        <button className="btn btn-sm btn-primary">View</button>
-                        <button className="btn btn-sm btn-warning ms-2">Edit</button>
+                        <button className="btn btn-sm btn-primary me-2">View</button>
+                        <button className="btn btn-sm btn-warning">Edit</button>
                       </td>
                     </tr>
                   ))}

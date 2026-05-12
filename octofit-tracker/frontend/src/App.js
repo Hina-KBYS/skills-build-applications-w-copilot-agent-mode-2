@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom';
 import './App.css';
 import Users from './components/Users';
 import Teams from './components/Teams';
@@ -8,6 +8,8 @@ import Workouts from './components/Workouts';
 import Leaderboard from './components/Leaderboard';
 
 function App() {
+  console.log('App loaded with backend host:', process.env.REACT_APP_CODESPACE_NAME);
+
   return (
     <Router>
       <div className="App">
@@ -31,29 +33,29 @@ function App() {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/users">
+                  <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/users">
                     Users
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/teams">
+                  <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/teams">
                     Teams
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/activities">
+                  <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/activities">
                     Activities
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/workouts">
+                  <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/workouts">
                     Workouts
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/leaderboard">
+                  <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/leaderboard">
                     Leaderboard
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </div>
@@ -71,36 +73,36 @@ function App() {
                     Your personal fitness and activity tracking application. Track your workouts, manage your teams, and climb the leaderboard!
                   </p>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
-                    <Link to="/users" className="card">
-                      <div className="card-body text-center">
+                    <NavLink to="/users" className="card text-decoration-none h-100">
+                      <div className="card-body text-center d-flex flex-column justify-content-center">
                         <h5 className="card-title">👥 Users</h5>
                         <p className="card-text">View and manage user profiles</p>
                       </div>
-                    </Link>
-                    <Link to="/teams" className="card">
-                      <div className="card-body text-center">
+                    </NavLink>
+                    <NavLink to="/teams" className="card text-decoration-none h-100">
+                      <div className="card-body text-center d-flex flex-column justify-content-center">
                         <h5 className="card-title">🏢 Teams</h5>
                         <p className="card-text">Create and join teams</p>
                       </div>
-                    </Link>
-                    <Link to="/activities" className="card">
-                      <div className="card-body text-center">
+                    </NavLink>
+                    <NavLink to="/activities" className="card text-decoration-none h-100">
+                      <div className="card-body text-center d-flex flex-column justify-content-center">
                         <h5 className="card-title">📋 Activities</h5>
                         <p className="card-text">Track your activities</p>
                       </div>
-                    </Link>
-                    <Link to="/workouts" className="card">
-                      <div className="card-body text-center">
+                    </NavLink>
+                    <NavLink to="/workouts" className="card text-decoration-none h-100">
+                      <div className="card-body text-center d-flex flex-column justify-content-center">
                         <h5 className="card-title">💪 Workouts</h5>
                         <p className="card-text">Log your workout sessions</p>
                       </div>
-                    </Link>
-                    <Link to="/leaderboard" className="card">
-                      <div className="card-body text-center">
+                    </NavLink>
+                    <NavLink to="/leaderboard" className="card text-decoration-none h-100">
+                      <div className="card-body text-center d-flex flex-column justify-content-center">
                         <h5 className="card-title">🏆 Leaderboard</h5>
                         <p className="card-text">Compete with other users</p>
                       </div>
-                    </Link>
+                    </NavLink>
                   </div>
                 </div>
               }
