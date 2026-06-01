@@ -34,12 +34,19 @@
     ],
     "portAttributes": {
       "3000": { // React port attributes
-      "label": "octofit-tracker",
-      "requireLocalPort": true
+        "label": "octofit-tracker",
+        "requireLocalPort": true,
+        "visibility": "public"
       },
       "8000": { // Django port attributes
-      "label": "octofit-api",
-      "requireLocalPort": true
+        "label": "octofit-api",
+        "requireLocalPort": true,
+        "visibility": "public"
+      },
+      "27017": { // MongoDB port attributes
+        "label": "octofit-mongo",
+        "requireLocalPort": true,
+        "visibility": "public"
       }
     }
 }
