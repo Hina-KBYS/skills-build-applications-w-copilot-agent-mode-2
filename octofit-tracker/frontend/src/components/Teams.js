@@ -6,17 +6,20 @@ const Teams = () => {
   const [error, setError] = useState(null);
 
   const getApiBaseUrl = () => {
+    if (process.env.REACT_APP_API_BASE_URL) {
+      return process.env.REACT_APP_API_BASE_URL;
+    }
     const codespaceName = process.env.REACT_APP_CODESPACE_NAME;
     if (codespaceName) {
-      return `https://${codespaceName}-8000.app.github.dev/api`;
+      return `https://${codespaceName}-8000.app.github.dev`;
     }
-    return 'http://localhost:8000/api';
+    return window.location.origin;
   };
 
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const apiUrl = `${getApiBaseUrl()}/teams/`;
+        const apiUrl = `${getApiBaseUrl()}/api/teams/`;
         console.log('Fetching teams from:', apiUrl);
         const response = await fetch(apiUrl);
         
