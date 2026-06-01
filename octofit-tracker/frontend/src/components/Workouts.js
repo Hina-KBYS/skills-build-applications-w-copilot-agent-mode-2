@@ -20,6 +20,7 @@ const Workouts = () => {
     const fetchWorkouts = async () => {
       try {
         const apiUrl = `${getApiBaseUrl()}/api/workouts/`;
+        // Expected codespace backend endpoint: https://<codespace-name>-8000.app.github.dev/api/workouts/
         console.log('Fetching workouts from:', apiUrl);
         const response = await fetch(apiUrl);
         

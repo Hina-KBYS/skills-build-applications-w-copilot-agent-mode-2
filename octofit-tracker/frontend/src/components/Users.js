@@ -20,6 +20,7 @@ const Users = () => {
     const fetchUsers = async () => {
       try {
         const apiUrl = `${getApiBaseUrl()}/api/users/`;
+        // Expected codespace backend endpoint: https://<codespace-name>-8000.app.github.dev/api/users/
         console.log('Fetching users from:', apiUrl);
         const response = await fetch(apiUrl);
         

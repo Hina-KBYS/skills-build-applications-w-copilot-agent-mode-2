@@ -20,6 +20,7 @@ const Leaderboard = () => {
     const fetchLeaderboard = async () => {
       try {
         const apiUrl = `${getApiBaseUrl()}/api/leaderboard/`;
+        // Expected codespace backend endpoint: https://<codespace-name>-8000.app.github.dev/api/leaderboard/
         console.log('Fetching leaderboard from:', apiUrl);
         const response = await fetch(apiUrl);
         

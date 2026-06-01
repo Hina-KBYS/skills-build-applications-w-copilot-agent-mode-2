@@ -20,6 +20,7 @@ const Activities = () => {
     const fetchActivities = async () => {
       try {
         const apiUrl = `${getApiBaseUrl()}/api/activities/`;
+        // Expected codespace backend endpoint: https://<codespace-name>-8000.app.github.dev/api/activities/
         console.log('Fetching activities from:', apiUrl);
         const response = await fetch(apiUrl);
         

@@ -20,6 +20,7 @@ const Teams = () => {
     const fetchTeams = async () => {
       try {
         const apiUrl = `${getApiBaseUrl()}/api/teams/`;
+        // Expected codespace backend endpoint: https://<codespace-name>-8000.app.github.dev/api/teams/
         console.log('Fetching teams from:', apiUrl);
         const response = await fetch(apiUrl);
         
